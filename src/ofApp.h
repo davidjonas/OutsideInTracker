@@ -6,7 +6,7 @@
 #include "ofxOsc.h"
 
 
-// send host (aka ip address)
+// send host as Multicast
 #define HOST "255.255.255.255"
 /// send port
 #define PORT 1111
