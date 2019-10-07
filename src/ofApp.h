@@ -3,6 +3,13 @@
 #include "ofMain.h"
 #include "ofxWebcamTracker.h"
 #include "ofxGui.h"
+#include "ofxOsc.h"
+
+
+// send host (aka ip address)
+#define HOST "255.255.255.255"
+/// send port
+#define PORT 1111
 
 class ofApp : public ofBaseApp{
 
@@ -40,4 +47,10 @@ class ofApp : public ofBaseApp{
     ofxToggle captureBackground;
     ofxToggle outdoorMode;
     ofxToggle showAll;
+		ofxToggle render;
+
+		//OSC
+		ofxOscSender sender;
+		void sendBlobs();
+		bool connected;
 };
