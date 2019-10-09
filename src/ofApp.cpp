@@ -12,7 +12,7 @@ void ofApp::setup(){
   }
   tracker.init(active);
   //tracker.setOutdoorModeBgRefreshRate(60);
-  tracker.setOutdoorModeMinSpeed(0);
+  tracker.setOutdoorModeMinSpeed(2);
   setupGUI();
 
   //OSC
