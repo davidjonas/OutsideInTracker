@@ -11,7 +11,8 @@ void ofApp::setup(){
     active.push_back(devices[0]);
   }
   tracker.init(active);
-
+  //tracker.setOutdoorModeBgRefreshRate(60);
+  tracker.setOutdoorModeMinSpeed(0);
   setupGUI();
 
   //OSC
@@ -32,7 +33,7 @@ void ofApp::setupGUI()
 	calibrateGui.add(threshold.setup("Threshold", 5, 0.0, 255.0));
 	calibrateGui.add(blurAmount.setup("Blur Amount", 9.0, 0.0, 100.0));
 	calibrateGui.add(blur.setup("Blur", false));
-	calibrateGui.add(minBlobSize.setup("Minimum Blob Area", 100.0, 0.0, (tracker.getWidth()*tracker.getHeight())/4));
+	calibrateGui.add(minBlobSize.setup("Minimum Blob Area", 100.0, 0.0, 1000.0));
 	calibrateGui.add(edgeThreshold.setup("Edge Threshold", 10.0, 0.0, 100.0));
 	calibrateGui.add(tolerance.setup("Tracker tolerance", 50.0, 10.0, 500.0));
 	calibrateGui.add(captureBackground.setup("Capture Background", false));
