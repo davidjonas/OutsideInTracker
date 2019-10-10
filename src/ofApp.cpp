@@ -11,8 +11,8 @@ void ofApp::setup(){
     active.push_back(devices[0]);
   }
   tracker.init(active);
-  //tracker.setOutdoorModeBgRefreshRate(60);
-  tracker.setOutdoorModeMinSpeed(2);
+  tracker.setOutdoorModeBgRefreshRate(10);
+  tracker.setOutdoorModeMinSpeed(0);
   setupGUI();
 
   //OSC
@@ -131,6 +131,12 @@ void ofApp::sendBlobs(){
     blob["overlap"] = b->isOverlapping();
 
     blobsJson.push_back(blob);
+    if(blobsJson.size() > 4){
+      m.setAddress("/blobs");
+    	m.addStringArg(blobsJson.dump());
+    	sender.sendMessage(m, false);
+      blobsJson.clear();
+    }
   }
 
 	m.setAddress("/blobs");
